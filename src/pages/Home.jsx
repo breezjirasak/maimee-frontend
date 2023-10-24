@@ -9,9 +9,118 @@ import { update_Gamestate } from "../services/Mai";
 import logo from "../assets/Maimee1.png"
 
 
+const SampleBeats = [
+    {
+      "beatmap_id": 1001,
+      "name": "Beatmap 1",
+      "image_url": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+      "difficulty": 2,
+      "note_count": 20,
+      "bpm": 165,
+      "duration": 5000
+    },
+    {
+      "beatmap_id": 1002,
+      "name": "Beatmap 2",
+      "image_url": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+      "difficulty": 4,
+      "note_count": 25,
+      "bpm": 175,
+      "duration": 6000
+    },
+    {
+      "beatmap_id": 1003,
+      "name": "Beatmap 3",
+      "image_url": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+      "difficulty": 1,
+      "note_count": 12,
+      "bpm": 150,
+      "duration": 4000
+    },
+    {
+      "beatmap_id": 1004,
+      "name": "Beatmap 4",
+      "image_url": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+      "difficulty": 5,
+      "note_count": 30,
+      "bpm": 180,
+      "duration": 3500
+    },
+    {
+      "beatmap_id": 1005,
+      "name": "Beatmap 5",
+      "image_url": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+      "difficulty": 3,
+      "note_count": 18,
+      "bpm": 170,
+      "duration": 7000
+    },
+    {
+      "beatmap_id": 1006,
+      "name": "Beatmap 6",
+      "image_url": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+      "difficulty": 2,
+      "note_count": 22,
+      "bpm": 160,
+      "duration": 10000
+    },
+    {
+      "beatmap_id": 1007,
+      "name": "Beatmap 7",
+      "image_url": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+      "difficulty": 4,
+      "note_count": 16,
+      "bpm": 175,
+      "duration": 8000
+    },
+    {
+      "beatmap_id": 1008,
+      "name": "Beatmap 8",
+      "image_url": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+      "difficulty": 1,
+      "note_count": 28,
+      "bpm": 155,
+      "duration": 9000
+    },
+    {
+      "beatmap_id": 1009,
+      "name": "Beatmap 9",
+      "image_url": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+      "difficulty": 3,
+      "note_count": 14,
+      "bpm": 180,
+      "duration": 2400
+    },
+    {
+      "beatmap_id": 1010,
+      "name": "Beatmap 10",
+      "image_url": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+      "difficulty": 5,
+      "note_count": 24,
+      "bpm": 165,
+      "duration": 2000
+    }
+]
+
+const SampleLeaderBoard = [
+  {
+    "username": "sample",
+    "score": 80
+  },
+  {
+    "username": "breeze",
+    "score": 90
+  },
+  {
+    "username": "breeze",
+    "score": 100
+  },
+]
+
+
 const Home = () => {
-  const [beats, setBeats] = useState([]);
-  const [records, setRecords] = useState([])
+  const [beats, setBeats] = useState(SampleBeats);
+  const [records, setRecords] = useState(SampleLeaderBoard)
   const [number, setNumber] = useState(-1);
 
 
@@ -20,10 +129,10 @@ const Home = () => {
   });
 
   useEffect(() => {
-      getBeats().then(data => setBeats(data))
-      getLeaderBoard(number, 4).then(data => setRecords(data))
-      update_Gamestate({"game_state": "MENU", "beatmap_id": null})
-  },[number])
+    // getBeats().then(data => setBeats(data))
+    // getLeaderBoard(number, 4).then(data => setRecords(data))
+    // update_Gamestate({ "game_state": "MENU", "beatmap_id": null })
+  }, [number])
 
   console.log(records)
 
@@ -38,7 +147,7 @@ const Home = () => {
         {number === -1
           ? null
           : records
-              .map((record, index) => <Board {...record} />)}
+            .map((record, index) => <Board {...record} />)}
       </div>
       <div className="col-2">
         {beats.map((beat) => (

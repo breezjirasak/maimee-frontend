@@ -23,7 +23,8 @@ const Card = ({beatmap_id, name, image_url, difficulty, note_count, bpm, duratio
     }
 
     return (
-        <Link to={routeName} onClick={setState}>
+        // <Link to={routeName} onClick={setState}>
+        <Link >
         <div className="container" onMouseOver={board} onMouseLeave={setzero}>
             <img src={image_url} alt="" />
             <div class="top-left">
